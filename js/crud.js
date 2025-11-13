@@ -15,7 +15,7 @@ async function main() {
 
     // Llamar las funciones CRUD aquí:
     // await crearUsuario(usuarios);
-    // await leerUsuarios(usuarios);
+     await leerUsuarios(usuarios);
     // await actualizarUsuario(usuarios);
     // await eliminarUsuario(usuarios);
 
@@ -44,4 +44,18 @@ async function leerUsuarios(usuarios) {
   const lista = await usuarios.find().toArray();
   console.log("📋 Usuarios registrados:");
   console.table(lista);
+}
+
+
+async function actualizarUsuario(usuarios) {
+  const filtro = { nombre: "Carlos" }; // Buscará por nombre
+  const cambios = { $set: { ocupacion: "Diseñador Senior" } };
+
+  const resultado = await usuarios.updateOne(filtro, cambios);
+
+  if (resultado.modifiedCount > 0) {
+    console.log("✅ Usuario actualizado correctamente");
+  } else {
+    console.log("⚠️ No se encontró el usuario a actualizar");
+  }
 }
