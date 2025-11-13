@@ -15,8 +15,8 @@ async function main() {
 
     // Llamar las funciones CRUD aquí:
     // await crearUsuario(usuarios);
-     await leerUsuarios(usuarios);
-    // await actualizarUsuario(usuarios);
+    // await leerUsuarios(usuarios);
+     await actualizarUsuario(usuarios);
     // await eliminarUsuario(usuarios);
 
   } catch (error) {
@@ -57,5 +57,18 @@ async function actualizarUsuario(usuarios) {
     console.log("✅ Usuario actualizado correctamente");
   } else {
     console.log("⚠️ No se encontró el usuario a actualizar");
+  }
+}
+
+
+async function eliminarUsuario(usuarios) {
+  const filtro = { nombre: "Carlos" };
+
+  const resultado = await usuarios.deleteOne(filtro);
+
+  if (resultado.deletedCount > 0) {
+    console.log("🗑️ Usuario eliminado correctamente");
+  } else {
+    console.log("⚠️ No se encontró el usuario a eliminar");
   }
 }
