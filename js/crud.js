@@ -39,3 +39,9 @@ async function crearUsuario(usuarios) {
   const resultado = await usuarios.insertOne(nuevo);
   console.log("✅ Usuario creado con ID:", resultado.insertedId);
 }
+
+async function leerUsuarios(usuarios) {
+  const lista = await usuarios.find().toArray();
+  console.log("📋 Usuarios registrados:");
+  console.table(lista);
+}
