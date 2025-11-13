@@ -27,3 +27,15 @@ async function main() {
 }
 
 main();
+
+async function crearUsuario(usuarios) {
+  const nuevo = {
+    nombre: "Carlos",
+    edad: 30,
+    pais: "México",
+    ocupacion: "Diseñador"
+  };
+
+  const resultado = await usuarios.insertOne(nuevo);
+  console.log("✅ Usuario creado con ID:", resultado.insertedId);
+}
