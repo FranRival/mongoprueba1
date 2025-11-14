@@ -16,8 +16,13 @@ async function main() {
     // Llamar las funciones CRUD aquí:
     // await crearUsuario(usuarios);
     // await leerUsuarios(usuarios);
-     await actualizarUsuario(usuarios);
+    // await actualizarUsuario(usuarios);
     // await eliminarUsuario(usuarios);
+
+    const resultado = await usuarios.find({edad:{$gt:25}}).toArray()
+
+    console.log(resultado);
+    
 
   } catch (error) {
     console.error("❌ Error general:", error);
@@ -64,8 +69,8 @@ async function leerUsuarios(usuarios) {
 
 
 async function actualizarUsuario(usuarios) {
-  const filtro = { nombre: "Eduardo" }; // Buscará por nombre
-  const cambios = { $set: { nombre: "Carla",edad:29, ocupacion: "Bailarina" } };
+  const filtro = { nombre: "Carla" }; // Buscará por nombre
+  const cambios = { $set: {edad:29, pais: "Italia"} };
 
   const resultado = await usuarios.updateOne(filtro, cambios);
 
@@ -77,18 +82,11 @@ async function actualizarUsuario(usuarios) {
 }
 
 
-async function mas25(usuarios) {
-  const edadMaxima = {edad: 23}
-  if (usuarios>=25) {
-    console.log()
-    
-  }
-}
 
 
 
 async function eliminarUsuario(usuarios) {
-  const filtro = { nombre: "Carlos" };
+  const filtro = { nombre: "Paco" };
 
   const resultado = await usuarios.deleteOne(filtro);
 
