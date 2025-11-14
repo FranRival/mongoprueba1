@@ -32,7 +32,7 @@ async function main() {
 }
 
 main();
-
+//se hizo merge de master a main
 
 async function crearUsuario(usuarios) {
   const nuevosUsuarios = [{
