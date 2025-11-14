@@ -14,9 +14,9 @@ async function main() {
     const usuarios = db.collection("usuarios");
 
     // Llamar las funciones CRUD aquí:
-     await crearUsuario(usuarios);
+    // await crearUsuario(usuarios);
     // await leerUsuarios(usuarios);
-    // await actualizarUsuario(usuarios);
+     await actualizarUsuario(usuarios);
     // await eliminarUsuario(usuarios);
 
   } catch (error) {
@@ -64,8 +64,8 @@ async function leerUsuarios(usuarios) {
 
 
 async function actualizarUsuario(usuarios) {
-  const filtro = { nombre: "Carlos" }; // Buscará por nombre
-  const cambios = { $set: { ocupacion: "Diseñador Senior" } };
+  const filtro = { nombre: "Eduardo" }; // Buscará por nombre
+  const cambios = { $set: { nombre: "Carla",edad:29, ocupacion: "Bailarina" } };
 
   const resultado = await usuarios.updateOne(filtro, cambios);
 
