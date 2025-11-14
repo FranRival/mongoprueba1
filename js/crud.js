@@ -14,9 +14,9 @@ async function main() {
     const usuarios = db.collection("usuarios");
 
     // Llamar las funciones CRUD aquí:
-    // await crearUsuario(usuarios);
+     await crearUsuario(usuarios);
     // await leerUsuarios(usuarios);
-     await actualizarUsuario(usuarios);
+    // await actualizarUsuario(usuarios);
     // await eliminarUsuario(usuarios);
 
   } catch (error) {
@@ -28,15 +28,31 @@ async function main() {
 
 main();
 
-async function crearUsuario(usuarios) {
-  const nuevo = {
-    nombre: "Carlos",
-    edad: 30,
-    pais: "México",
-    ocupacion: "Diseñador"
-  };
 
-  const resultado = await usuarios.insertOne(nuevo);
+async function crearUsuario(usuarios) {
+  const nuevosUsuarios = [{
+    nombre: "Ximena",
+    edad: 18,
+    pais: "DF",
+    ocupacion: "Cazafantasmas"
+  },{
+    nombre:"Eduardo",
+    edad:87,
+    pais: "Colombia",
+    ocupacion: "Constructor"
+  },{
+    nombre:"Paco",
+    edad: 33,
+    pais: "Venezuela",
+    ocupacion: "sastre"
+  },{
+    nombre: "Antonia",
+    edad: 21,
+    pais: "Espana",
+    ocupacion: "Camarera"
+  }]
+
+  const resultado = await usuarios.insertMany(nuevosUsuarios);
   console.log("✅ Usuario creado con ID:", resultado.insertedId);
 }
 
@@ -59,6 +75,16 @@ async function actualizarUsuario(usuarios) {
     console.log("⚠️ No se encontró el usuario a actualizar");
   }
 }
+
+
+async function mas25(usuarios) {
+  const edadMaxima = {edad: 23}
+  if (usuarios>=25) {
+    console.log()
+    
+  }
+}
+
 
 
 async function eliminarUsuario(usuarios) {
