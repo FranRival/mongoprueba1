@@ -25,8 +25,13 @@ async function main() {
     //const porPais = await usuarios.find({pais: "Italia"}).toArray()
     //console.table(porPais)
 
-    const todosLosPaises = await usuarios.find({},{projection:{nombre: 1,pais:1}}).toArray()
-    console.table(todosLosPaises)
+    //const todosLosPaises = await usuarios.find({},{projection:{nombre: 1,pais:1}}).toArray()
+    //console.table(todosLosPaises)
+
+    const ordenarPorEdad = await usuarios.find().sort({edad:1}).toArray()
+    console.table(ordenarPorEdad)
+
+
     
 
   } catch (error) {
