@@ -21,7 +21,7 @@ async function main() {
 
     const resultado = await usuarios.find({edad:{$gt:25}}).toArray()
 
-    console.log(resultado);
+    console.table(resultado);
     
 
   } catch (error) {
