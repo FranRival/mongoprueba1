@@ -19,9 +19,14 @@ async function main() {
     // await actualizarUsuario(usuarios);
     // await eliminarUsuario(usuarios);
 
-    const resultado = await usuarios.find({edad:{$gt:25}}).toArray()
+    //const resultado = await usuarios.find({edad:{$gt:25}}).toArray()
+    //console.table(resultado);
 
-    console.table(resultado);
+    //const porPais = await usuarios.find({pais: "Italia"}).toArray()
+    //console.table(porPais)
+
+    const todosLosPaises = await usuarios.find({},{projection:{nombre: 1,pais:1}}).toArray()
+    console.table(todosLosPaises)
     
 
   } catch (error) {
