@@ -22,7 +22,10 @@ async function main() {
         console.log("Base usada:", db.databaseName);
         console.log("Colección usada:", usuarios.collectionName);
 
-        await actualizarUsuario(usuarios);
+        await actualizarUsuario(
+          usuarios,
+          {nombre: "Lorena"},
+        {$set:{pais:"Francia"}});
 
     // BUSCAR TODO
    // const lista = await usuarios.find().toArray();

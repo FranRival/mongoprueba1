@@ -78,9 +78,7 @@ async function leerUsuarios(usuarios) {
 }
 
 
-async function actualizarUsuario(usuarios) {
-  const filtro = { nombre: "Carla" }; // Buscará por nombre
-  const cambios = { $set: {edad:29, pais: "Italia"} };
+async function actualizarUsuario(usuarios, filtro,cambios) {
 
   const resultado = await usuarios.updateOne(filtro, cambios);
 
