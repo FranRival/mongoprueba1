@@ -1,6 +1,6 @@
 // ==== IMPORTS ====
 const { MongoClient } = require("mongodb");
-const { actualizarUsuario } = require("js/crud.js");
+const { actualizarUsuario } = require("./js/crud.js");
 
 // ==== CONFIG ====
 const uri = "mongodb+srv://PrimerUsuario:1234567891A!@prototipo11nov25.d37xl51.mongodb.net/?appName=Prototipo11nov25"; // pon tu cadena
@@ -18,14 +18,16 @@ async function main() {
 
     // INSERTAR
      const resultado = await usuarios.insertOne({ nombre: "Lorena", edad: 17 });
+
+     
         console.log("ID insertado:", resultado.insertedId);
         console.log("Base usada:", db.databaseName);
         console.log("Colección usada:", usuarios.collectionName);
 
         await actualizarUsuario(
           usuarios,
-          {nombre: "Lorena"},
-        {$set:{pais:"Francia"}});
+          {_id: resultado.insertedId},
+        {$set:{pais:"Canada"}});
 
     // BUSCAR TODO
    // const lista = await usuarios.find().toArray();
