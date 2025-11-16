@@ -106,3 +106,5 @@ async function eliminarUsuario(usuarios) {
     console.log("⚠️ No se encontró el usuario a eliminar");
   }
 }
+
+module.exports = { actualizarUsuario };
