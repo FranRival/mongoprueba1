@@ -17,16 +17,16 @@ async function main() {
     // ========== EJEMPLOS BÁSICOS ==========
 
     // INSERTAR
-     const resultado = await usuarios.insertOne({ nombre: "Lorena", edad: 17 });
+    // const resultado = await usuarios.insertOne({ nombre: "Mariela", edad: 19 });
 
      
 
-        await eliminarUsuario(usuarios);
+       // await eliminarUsuario(usuarios);
 
         await actualizarUsuario(
           usuarios,
-          {_id: resultado.insertedId},
-        {$set:{pais:"Bulgaria"}});
+          {nombre: "Mariela"},
+        {$set:{pais:"Croacia"}});
 
     // BUSCAR TODO
    // const lista = await usuarios.find().toArray();
