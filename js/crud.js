@@ -80,7 +80,7 @@ async function leerUsuarios(usuarios) {
 
 async function actualizarUsuario(usuarios, filtro,cambios) {
 
-  const resultado = await usuarios.updateOne(filtro, cambios);
+  const resultado = await usuarios.updateOne(filtro, cambios,{upsert:false});
 
   if (resultado.modifiedCount > 0) {
     console.log("✅ Usuario actualizado correctamente");
@@ -90,11 +90,7 @@ async function actualizarUsuario(usuarios, filtro,cambios) {
 }
 
 
-
-
-
 async function eliminarUsuario(usuarios) {
-  const filtro = { nombre: "Paco" };
 
   const resultado = await usuarios.deleteOne(filtro);
 
@@ -105,4 +101,4 @@ async function eliminarUsuario(usuarios) {
   }
 }
 
-module.exports = { actualizarUsuario };
+module.exports = { actualizarUsuario, eliminarUsuario };
