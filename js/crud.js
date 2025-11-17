@@ -91,8 +91,9 @@ async function actualizarUsuario(usuarios, filtro,cambios) {
 
 
 async function eliminarUsuario(usuarios) {
+  const filtro = { nombre: "Lorena" };
 
-  const resultado = await usuarios.deleteOne(filtro);
+  const resultado = await usuarios.deleteMany(filtro);
 
   if (resultado.deletedCount > 0) {
     console.log("🗑️ Usuario eliminado correctamente");

@@ -20,16 +20,13 @@ async function main() {
     // const resultado = await usuarios.insertOne({ nombre: "Lorena", edad: 17 });
 
      
-        console.log("ID insertado:", resultado.insertedId);
-        console.log("Base usada:", db.databaseName);
-        console.log("Colección usada:", usuarios.collectionName);
 
-        await eliminarUsuario(usuarios, {nombre: "Lorena"});
+        await eliminarUsuario(usuarios);
 
-        await actualizarUsuario(
-          usuarios,
-          {_id: resultado.insertedId},
-        {$set:{pais:"Bulgaria"}});
+        // await actualizarUsuario(
+        //   usuarios,
+        //   {_id: resultado.insertedId},
+        // {$set:{pais:"Bulgaria"}});
 
     // BUSCAR TODO
    // const lista = await usuarios.find().toArray();
