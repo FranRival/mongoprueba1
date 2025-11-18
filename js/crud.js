@@ -86,6 +86,29 @@ async function listarUsuarios(usuarios) {
   
 }
 
+// 3) Buscar por país
+async function buscarPorPais(usuarios, pais) {
+  const resultado = await usuarios.find({ pais }).toArray();
+  console.table(resultado);
+}
+
+// 4) Actualizar edad
+async function actualizarEdad(usuarios, nombre, nuevaEdad) {
+  await usuarios.updateOne(
+    { nombre },
+    { $set: { edad: nuevaEdad } }
+  );
+  console.log(`Edad actualizada de ${nombre} a ${nuevaEdad}`);
+}
+
+// 5) Eliminar por nombre
+async function eliminarPorNombre(usuarios, nombre) {
+  await usuarios.deleteOne({ nombre });
+  console.log(`Usuario eliminado: ${nombre}`);
+}
+
+
+
 
 async function leerUsuarios(usuarios) {
   const lista = await usuarios.find().toArray();
