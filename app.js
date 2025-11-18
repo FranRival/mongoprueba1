@@ -1,6 +1,6 @@
 // ==== IMPORTS ====
 const { MongoClient } = require("mongodb");
-const { actualizarUsuario,eliminarUsuario } = require("./js/crud.js");
+const { actualizarUsuario,eliminarUsuario, listarUsuarios } = require("./js/crud.js");
 
 // ==== CONFIG ====
 const uri = "mongodb+srv://PrimerUsuario:1234567891A!@prototipo11nov25.d37xl51.mongodb.net/?appName=Prototipo11nov25"; // pon tu cadena
@@ -19,6 +19,7 @@ async function main() {
     // INSERTAR
     // const resultado = await usuarios.insertOne({ nombre: "Mariela", edad: 19 });
 
+    await listarUsuarios(usuarios)
      
 
        // await eliminarUsuario(usuarios);

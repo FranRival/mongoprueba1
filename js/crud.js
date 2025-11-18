@@ -77,6 +77,14 @@ async function agregarUsuario(usuarios, nombre, edad,pais) {
   console.log(`✅ Usuario agregado ${nombre}`);
 }
 
+// 2) Listar usuarios
+async function listarUsuarios(usuarios) {
+  const lista = await usuarios.find().toArray();
+  console.log('A punto de listar');
+  console.table(lista);
+  console.log('Enlistado papu');
+  
+}
 
 
 async function leerUsuarios(usuarios) {
@@ -110,4 +118,4 @@ async function eliminarUsuario(usuarios, nombre) {
   }
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario };
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios };
