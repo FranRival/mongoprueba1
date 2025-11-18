@@ -23,10 +23,10 @@ async function main() {
 
        // await eliminarUsuario(usuarios);
 
-        await actualizarUsuario(
+        /* await actualizarUsuario(
           usuarios,
           {nombre: "Mariela"},
-        {$set:{pais:"Croacia"}});
+        {$set:{pais:"Croacia"}}); */
 
     // BUSCAR TODO
    // const lista = await usuarios.find().toArray();

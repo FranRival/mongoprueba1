@@ -71,6 +71,14 @@ async function crearUsuario(usuarios) {
   console.log("✅ Usuario creado con ID:", resultado.insertedId);
 }
 
+//1) Agregar Usuario
+async function agregarUsuario(usuarios, nombre, edad,pais) {
+  const resultado = await usuarios.insertOne(nuevosUsuarios);
+  console.log(`✅ Usuario agregado ${nombre}`);
+}
+
+
+
 async function leerUsuarios(usuarios) {
   const lista = await usuarios.find().toArray();
   console.log("📋 Usuarios registrados:");
@@ -102,4 +110,4 @@ async function eliminarUsuario(usuarios, nombre) {
   }
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario };
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario };
