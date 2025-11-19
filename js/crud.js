@@ -73,6 +73,7 @@ async function crearUsuario(usuarios) {
 
 //1) Agregar Usuario
 async function agregarUsuario(usuarios, nombre, edad,pais) {
+  const nuevosUsuarios = {nombre, edad,pais}
   const resultado = await usuarios.insertOne(nuevosUsuarios);
   console.log(`✅ Usuario agregado ${nombre}`);
 }
@@ -119,7 +120,7 @@ async function leerUsuarios(usuarios) {
 
 async function actualizarUsuario(usuarios, filtro,cambios) {
 
-  const resultado = await usuarios.updateOne(filtro, cambios,{upsert:false});
+  const resultado = await usuarios.updateOne(filtro, cambios,{upsert:false},{upsert:false});
 
   if (resultado.modifiedCount > 0) {
     console.log("✅ Usuario actualizado correctamente");
