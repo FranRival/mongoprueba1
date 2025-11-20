@@ -1,6 +1,6 @@
 // ==== IMPORTS ====
 const { MongoClient } = require("mongodb");
-const { actualizarUsuario,eliminarUsuario, listarUsuarios, agregarUsuario, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia } = require("./js/crud.js");
+const crud = require("./js/crud.js");
 
 // ==== CONFIG ====
 const uri = "mongodb+srv://PrimerUsuario:1234567891A!@prototipo11nov25.d37xl51.mongodb.net/?appName=Prototipo11nov25"; // pon tu cadena
@@ -19,7 +19,7 @@ async function main() {
     // INSERTAR
     // const resultado = await usuarios.insertOne({ nombre: "Mariela", edad: 19 });
 
-    await listarUsuarios(usuarios)
+   // await listarUsuarios(usuarios)
      
 
        // await eliminarUsuario(usuarios);
@@ -29,10 +29,10 @@ async function main() {
           {nombre: "Maritza"},
         {$set:{pais:"China"}}); */
 
-       // await agregarUsuario(usuarios, "Lorena", 22,  "Moldavia")
+        await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
 
       // await eliminarVariosPorNombre(usuarios,"Lorena")
-       await eliminarEdadVacia(usuarios,null)
+      // await eliminarEdadVacia(usuarios,null)
 
     // BUSCAR TODO
    // const lista = await usuarios.find().toArray();
