@@ -108,6 +108,11 @@ async function eliminarPorNombre(usuarios, nombre) {
   console.log(`Usuario eliminado: ${nombre}`);
 }
 
+//5.1) Eliminar por nombre (Varios)
+async function eliminarVariosPorNombre(usuarios, nombre) {
+  await usuarios.deleteMany({ nombre });
+  console.log(`Usuario eliminado: ${nombre}`);
+}
 
 
 
@@ -142,4 +147,4 @@ async function eliminarUsuario(usuarios, nombre) {
   }
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios };
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre };
