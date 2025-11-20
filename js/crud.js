@@ -114,6 +114,13 @@ async function eliminarVariosPorNombre(usuarios, nombre) {
   console.log(`Usuario eliminado: ${nombre}`);
 }
 
+//5.2) Eliminar por pais
+async function eliminarPorPais(usuarios, pais) {
+  await usuarios.deleteOne({ pais });
+  console.log(`Usuario eliminado: ${pais}`);
+}
+
+
 
 
 async function leerUsuarios(usuarios) {
@@ -147,4 +154,4 @@ async function eliminarUsuario(usuarios, nombre) {
   }
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre };
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais };
