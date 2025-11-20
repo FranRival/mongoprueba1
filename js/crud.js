@@ -120,6 +120,12 @@ async function eliminarPorPais(usuarios, pais) {
   console.log(`Usuario eliminado: ${pais}`);
 }
 
+//5.3) Eliminar por objetos vacios
+async function eliminarEdadVacia(usuarios, edad) {
+  await usuarios.deleteMany({ edad:null });
+  console.log(`Usuario eliminado: ${edad}`);
+}
+
 
 
 
@@ -154,4 +160,4 @@ async function eliminarUsuario(usuarios, nombre) {
   }
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais };
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia };
