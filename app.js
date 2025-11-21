@@ -31,24 +31,11 @@ async function main() {
 
     //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
 
-    await crud.eliminarPorPais(usuarios,"Moldavia")
+   // await crud.eliminarPorPais(usuarios,"Moldavia")
 
-   /*  async function generacionUsuarios() {
-      const usuariosCien = []
-      for (let index = 1; index < 100; index++) {
-        usuariosCien.push({
-          id: index,
-          nombre: `Usuario ${index}`,
-          edad: Math.floor(Math.random() * 50) + 18,
-          pais: "Moldavia"
-        })
-      }
-      const resultado = await usuarios.insertMany(usuariosCien)
+   
 
-      console.log(`Se insertaron ${resultado.insertedCount} usuarios`);
-      return resultado
-    } */
-
+    await crud.generacionUsuarios()
 
 
     // await eliminarVariosPorNombre(usuarios,"Lorena")
