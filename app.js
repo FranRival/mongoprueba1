@@ -29,7 +29,31 @@ async function main() {
           {nombre: "Maritza"},
         {$set:{pais:"China"}}); */
 
-        await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
+        //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
+
+        function generacionUsuarios(){
+  const usuariosCien = []
+  for (let index = 1; index < 100; index++) {
+  usuariosCien.push({
+    id:index,
+    nombre: `Usuario ${index}`,
+    edad: Math.floor(Math.random()*50) +18,
+    pais: "Moldavia"
+  })
+}
+return usuariosCien
+}
+
+        async function insertarCienUsuarios() {
+          const datos = generacionUsuarios()
+
+          const resultado = await usuarios.insertMany(datos)
+          console.log(`Se insertaron ${resultado.insertedCount} usuarios`);
+          
+          
+        }
+
+       await insertarCienUsuarios()
 
       // await eliminarVariosPorNombre(usuarios,"Lorena")
       // await eliminarEdadVacia(usuarios,null)
@@ -56,3 +80,7 @@ async function main() {
 }
 
 main();
+
+
+
+
