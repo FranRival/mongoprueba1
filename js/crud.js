@@ -116,7 +116,7 @@ async function eliminarVariosPorNombre(usuarios, nombre) {
 
 //5.2) Eliminar por pais
 async function eliminarPorPais(usuarios, pais) {
-  await usuarios.deleteOne({ pais });
+  await usuarios.deleteMany({ pais });
   console.log(`Usuario eliminado: ${pais}`);
 }
 

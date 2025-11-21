@@ -19,47 +19,43 @@ async function main() {
     // INSERTAR
     // const resultado = await usuarios.insertOne({ nombre: "Mariela", edad: 19 });
 
-   // await listarUsuarios(usuarios)
-     
+    // await listarUsuarios(usuarios)
 
-       // await eliminarUsuario(usuarios);
 
-        /* await agregarUsuario(
-          usuarios,
-          {nombre: "Maritza"},
-        {$set:{pais:"China"}}); */
+    // await eliminarUsuario(usuarios);
 
-        //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
+    /* await agregarUsuario(
+      usuarios,
+      {nombre: "Maritza"},
+    {$set:{pais:"China"}}); */
 
-        function generacionUsuarios(){
-  const usuariosCien = []
-  for (let index = 1; index < 100; index++) {
-  usuariosCien.push({
-    id:index,
-    nombre: `Usuario ${index}`,
-    edad: Math.floor(Math.random()*50) +18,
-    pais: "Moldavia"
-  })
-}
-return usuariosCien
-}
+    //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
 
-        async function insertarCienUsuarios() {
-          const datos = generacionUsuarios()
+    await crud.eliminarPorPais(usuarios,"Moldavia")
 
-          const resultado = await usuarios.insertMany(datos)
-          console.log(`Se insertaron ${resultado.insertedCount} usuarios`);
-          
-          
-        }
+   /*  async function generacionUsuarios() {
+      const usuariosCien = []
+      for (let index = 1; index < 100; index++) {
+        usuariosCien.push({
+          id: index,
+          nombre: `Usuario ${index}`,
+          edad: Math.floor(Math.random() * 50) + 18,
+          pais: "Moldavia"
+        })
+      }
+      const resultado = await usuarios.insertMany(usuariosCien)
 
-       await insertarCienUsuarios()
+      console.log(`Se insertaron ${resultado.insertedCount} usuarios`);
+      return resultado
+    } */
 
-      // await eliminarVariosPorNombre(usuarios,"Lorena")
-      // await eliminarEdadVacia(usuarios,null)
+
+
+    // await eliminarVariosPorNombre(usuarios,"Lorena")
+    // await eliminarEdadVacia(usuarios,null)
 
     // BUSCAR TODO
-   // const lista = await usuarios.find().toArray();
+    // const lista = await usuarios.find().toArray();
     //console.table(lista);
 
     // BUSCAR ORDENADO
