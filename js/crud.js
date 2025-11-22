@@ -130,12 +130,12 @@ async function eliminarEdadVacia(usuarios, edad) {
 //6) ensertar 100 usuarios
 async function generacionUsuarios(usuarios) {
   const usuariosCien = []
-  for (let index = 0; index < 100; index++) {
+  for (let index = 200; index < 230; index++) {
     usuariosCien.push({
       id: index,
       nombre: {},
       edad: Math.floor(Math.random() * 50) + 18,
-      pais: "Chechenia"
+      pais: "Yucatan"
     })
   }
   const resultado = await usuarios.insertMany(usuariosCien)

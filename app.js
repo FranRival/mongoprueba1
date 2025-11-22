@@ -3,7 +3,7 @@ const { MongoClient } = require("mongodb");
 const crud = require("./js/crud.js");
 
 // ==== CONFIG ====
-const uri = "mongodb+srv://PrimerUsuario:1234567891A!@prototipo11nov25.d37xl51.mongodb.net/?appName=Prototipo11nov25"; // pon tu cadena
+const uri = "mongodb+srv://PrimerUsuario:1234567891A!@prototipo11nov25.d37xl51.mongodb.net/?retryWrites=true&w=majority&appName=Prototipo11nov25"; // pon tu cadena
 const client = new MongoClient(uri);
 
 async function main() {
@@ -36,12 +36,12 @@ async function main() {
    
 
    
-    //await crud.generacionUsuarios(usuarios)
+    await crud.generacionUsuarios(usuarios)
 
 
     // await eliminarVariosPorNombre(usuarios,"Lorena")
      //await crud.eliminarEdadVacia(usuarios,null)
-     await crud.eliminarNombreObjeto(usuarios)
+    // await crud.eliminarNombreObjeto(usuarios)
 
 
      
