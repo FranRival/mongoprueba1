@@ -29,7 +29,7 @@ async function main() {
     //console.table(todosLosPaises)
 
     const ordenarPorEdad = await usuarios.find().sort({edad:1}).toArray()
-    console.table(ordenarPorEdad)
+   // console.table(ordenarPorEdad)
 
 
     
@@ -127,9 +127,9 @@ async function eliminarEdadVacia(usuarios, edad) {
 }
 
 //6) ensertar 100 usuarios
- async function generacionUsuarios() {
+ async function generacionUsuarios(usuarios) {
       const usuariosCien = []
-      for (let index = 1; index < 100; index++) {
+      for (let index = 1; index < 50; index++) {
         usuariosCien.push({
           id: index,
           nombre: `Usuario ${index}`,
@@ -176,4 +176,11 @@ async function eliminarUsuario(usuarios, nombre) {
   }
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios };
+async function edadObjetoEliminar(usuarios) {
+  await usuarios.deleteMany({
+  edad: { $type: 3 } // 3 = object
+});
+  console.log("🧼 Limpieza 1 completada: edad = object eliminados");
+}
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar };
