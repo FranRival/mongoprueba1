@@ -36,16 +36,17 @@ async function main() {
    
 
    
-    await crud.generacionUsuarios()
+    //await crud.generacionUsuarios(usuarios)
 
 
     // await eliminarVariosPorNombre(usuarios,"Lorena")
      //await crud.eliminarEdadVacia(usuarios,null)
+     await crud.eliminarNombreObjeto(usuarios)
 
 
      
 
-    // await crud.edadObjetoEliminar(usuarios)
+     //await crud.edadObjetoEliminar(usuarios)
 
     // BUSCAR TODO
     // const lista = await usuarios.find().toArray();

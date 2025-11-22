@@ -28,11 +28,11 @@ async function main() {
     //const todosLosPaises = await usuarios.find({},{projection:{nombre: 1,pais:1}}).toArray()
     //console.table(todosLosPaises)
 
-    const ordenarPorEdad = await usuarios.find().sort({edad:1}).toArray()
-   // console.table(ordenarPorEdad)
+    const ordenarPorEdad = await usuarios.find().sort({ edad: 1 }).toArray()
+    // console.table(ordenarPorEdad)
 
 
-    
+
 
   } catch (error) {
     console.error("❌ Error general:", error);
@@ -50,17 +50,17 @@ async function crearUsuario(usuarios) {
     edad: 18,
     pais: "DF",
     ocupacion: "Cazafantasmas"
-  },{
-    nombre:"Eduardo",
-    edad:87,
+  }, {
+    nombre: "Eduardo",
+    edad: 87,
     pais: "Colombia",
     ocupacion: "Constructor"
-  },{
-    nombre:"Paco",
+  }, {
+    nombre: "Paco",
     edad: 33,
     pais: "Venezuela",
     ocupacion: "sastre"
-  },{
+  }, {
     nombre: "Antonia",
     edad: 21,
     pais: "Espana",
@@ -72,8 +72,8 @@ async function crearUsuario(usuarios) {
 }
 
 //1) Agregar Usuario
-async function agregarUsuario(usuarios, nombre, edad,pais) {
-  const nuevosUsuarios = {nombre, edad,pais}
+async function agregarUsuario(usuarios, nombre, edad, pais) {
+  const nuevosUsuarios = { nombre, edad, pais }
   const resultado = await usuarios.insertOne(nuevosUsuarios);
   console.log(`✅ Usuario agregado ${nombre}`);
 }
@@ -84,7 +84,7 @@ async function listarUsuarios(usuarios) {
   console.log('A punto de listar');
   console.table(lista);
   console.log('Enlistado papu');
-  
+
 }
 
 // 3) Buscar por país
@@ -122,26 +122,27 @@ async function eliminarPorPais(usuarios, pais) {
 
 //5.3) Eliminar por objetos vacios
 async function eliminarEdadVacia(usuarios, edad) {
-  await usuarios.deleteMany({ edad:null });
+  await usuarios.deleteMany({ edad: null });
   console.log(`Usuario eliminado: ${edad}`);
 }
 
-//6) ensertar 100 usuarios
- async function generacionUsuarios(usuarios) {
-      const usuariosCien = []
-      for (let index = 1; index < 50; index++) {
-        usuariosCien.push({
-          id: index,
-          nombre: `Usuario ${index}`,
-          edad: Math.floor(Math.random() * 50) + 18,
-          pais: "Chechenia"
-        })
-      }
-      const resultado = await usuarios.insertMany(usuariosCien)
 
-      console.log(`Se insertaron ${resultado.insertedCount} usuarios`);
-      return resultado
-    }
+//6) ensertar 100 usuarios
+async function generacionUsuarios(usuarios) {
+  const usuariosCien = []
+  for (let index = 0; index < 100; index++) {
+    usuariosCien.push({
+      id: index,
+      nombre: {},
+      edad: Math.floor(Math.random() * 50) + 18,
+      pais: "Chechenia"
+    })
+  }
+  const resultado = await usuarios.insertMany(usuariosCien)
+
+  console.log(`Se insertaron ${resultado.insertedCount} usuarios`);
+  return resultado
+}
 
 
 
@@ -152,9 +153,9 @@ async function leerUsuarios(usuarios) {
 }
 
 
-async function actualizarUsuario(usuarios, filtro,cambios) {
+async function actualizarUsuario(usuarios, filtro, cambios) {
 
-  const resultado = await usuarios.updateOne(filtro, cambios,{upsert:false},{upsert:false});
+  const resultado = await usuarios.updateOne(filtro, cambios, { upsert: false }, { upsert: false });
 
   if (resultado.modifiedCount > 0) {
     console.log("✅ Usuario actualizado correctamente");
@@ -165,7 +166,7 @@ async function actualizarUsuario(usuarios, filtro,cambios) {
 
 
 async function eliminarUsuario(usuarios, nombre) {
-  const filtro = { nombre:"Lorena"};
+  const filtro = { nombre: "Lorena" };
 
   const resultado = await usuarios.deleteOne(filtro);
 
@@ -178,9 +179,18 @@ async function eliminarUsuario(usuarios, nombre) {
 
 async function edadObjetoEliminar(usuarios) {
   await usuarios.deleteMany({
-  edad: { $type: 3 } // 3 = object
-});
+    edad: { $type: 3 } // 3 = object
+  });
   console.log("🧼 Limpieza 1 completada: edad = object eliminados");
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar };
+//5.4) Eliminar por nombre objetos vacios
+async function eliminarNombreObjeto(usuarios) {
+  await usuarios.deleteMany({
+    nombre: { $type: 3 } // 3 = object
+  });
+  console.log("🧼 Limpieza 2 completada: nombre = object eliminados");
+}
+
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto };
