@@ -194,7 +194,6 @@ async function eliminarNombreObjeto(usuarios) {
 
 
 async function usuariosCorruptos(coleccion) {
-
   const corruptos = await coleccion.find({
     $or: [
       { edad: { $type: 3 } },
@@ -208,9 +207,20 @@ async function usuariosCorruptos(coleccion) {
   console.log(corruptos);
   //para mostrar la cantidad de usuarios corruptos.
   console.log(`📌 Total de usuarios corruptos encontrados: ${corruptos.length}`);
-  
-
 }
 
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos };
+async function usuariosCorruptosEliminarlos(coleccion) {
+  const corruptos = await coleccion.deleteMany({
+    $or: [
+      { edad: { $type: 3 } },
+      { nombre: { $type: 3 } },
+      { edad: null },
+      { pais: null }
+    ]
+  //}).toArray();
+  })
+  console.log(`📌 Total de usuarios corruptos eliminados: ${corruptos.deletedCount}`);
+}
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos,usuariosCorruptosEliminarlos };

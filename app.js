@@ -35,7 +35,8 @@ async function main() {
 
    
 
-   await crud.usuariosCorruptos(usuarios)
+   //await crud.usuariosCorruptos(usuarios)
+   await crud.usuariosCorruptosEliminarlos(usuarios)
    
     //await crud.generacionUsuarios(usuarios)
 
