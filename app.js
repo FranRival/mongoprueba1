@@ -35,8 +35,9 @@ async function main() {
 
    
 
+   await crud.usuariosCorruptos(usuarios)
    
-    await crud.generacionUsuarios(usuarios)
+    //await crud.generacionUsuarios(usuarios)
 
 
     // await eliminarVariosPorNombre(usuarios,"Lorena")

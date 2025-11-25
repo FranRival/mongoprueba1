@@ -193,4 +193,21 @@ async function eliminarNombreObjeto(usuarios) {
 }
 
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto };
+async function usuariosCorruptos(coleccion) {
+
+  const corruptos = await coleccion.find({
+    $or: [
+      { edad: { $type: 3 } },
+      { nombre: { $type: 3 } },
+      { edad: null },
+      { pais: null }
+    ]
+  }).toArray();
+
+  console.log("📌 Documentos corruptos encontrados:");
+  console.log(corruptos);
+
+}
+
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos };
