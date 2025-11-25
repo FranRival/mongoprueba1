@@ -206,6 +206,9 @@ async function usuariosCorruptos(coleccion) {
 
   console.log("📌 Documentos corruptos encontrados:");
   console.log(corruptos);
+  //para mostrar la cantidad de usuarios corruptos.
+  console.log(`📌 Total de usuarios corruptos encontrados: ${corruptos.length}`);
+  
 
 }
 
