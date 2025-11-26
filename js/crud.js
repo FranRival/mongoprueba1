@@ -130,12 +130,12 @@ async function eliminarEdadVacia(usuarios, edad) {
 //6) ensertar 100 usuarios
 async function generacionUsuarios(usuarios) {
   const usuariosCien = []
-  for (let index = 200; index < 230; index++) {
+  for (let index = 100; index < 130; index++) {
     usuariosCien.push({
       id: index,
       nombre: {},
       edad: Math.floor(Math.random() * 50) + 18,
-      pais: "Yucatan"
+      pais: "Minezota"
     })
   }
   const resultado = await usuarios.insertMany(usuariosCien)
@@ -224,7 +224,7 @@ async function usuariosCorruptosEliminarlos(coleccion) {
 }
 
 
-function validarUsuario(usuario) {
+async function validarUsuarioAntesDeSubirABaseDatos(usuario) {
   if (!usuario.nombre || typeof usuario.nombre !== "string") return false;
   if (typeof usuario.edad !== "number" || usuario.edad < 0) return false;
   if (!usuario.pais || typeof usuario.pais !== "string") return false;
@@ -233,4 +233,19 @@ function validarUsuario(usuario) {
 }
 
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuario };
+async function validarUsuariosEnBD(coleccion) {
+  const todos = await coleccion.find({}).toArray();
+  let corruptos = 0;
+
+  for (const u of todos) {
+    if (!validarUsuarioAntesDeSubirABaseDatos(u)) {
+      corruptos++;
+    }
+  }
+
+  console.log(`🔍 Usuarios corruptos detectados: ${corruptos}`);
+  return corruptos;
+}
+
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD };

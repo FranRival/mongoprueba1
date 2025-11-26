@@ -31,7 +31,11 @@ async function main() {
 
     //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
 
-    await crud.eliminarPorPais(usuarios,"Chechenia")
+    //await crud.eliminarPorPais(usuarios,"Chechenia")
+
+    await crud.validarUsuariosEnBD(usuarios)
+    await crud.generacionUsuarios(usuarios)
+
 
    
 
