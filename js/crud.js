@@ -117,7 +117,7 @@ async function eliminarVariosPorNombre(usuarios, nombre) {
 //5.2) Eliminar por pais
 async function eliminarPorPais(usuarios, pais) {
   await usuarios.deleteMany({ pais });
-  console.log(`Usuario eliminado: ${pais}`);
+  console.log(`📌 Usuarios con el pais: ${pais} eliminados. Total: ${usuarios.deletedCount}`);
 }
 
 //5.3) Eliminar por objetos vacios
@@ -218,9 +218,19 @@ async function usuariosCorruptosEliminarlos(coleccion) {
       { edad: null },
       { pais: null }
     ]
-  //}).toArray();
+    //}).toArray();
   })
   console.log(`📌 Total de usuarios corruptos eliminados: ${corruptos.deletedCount}`);
 }
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos,usuariosCorruptosEliminarlos };
+
+function validarUsuario(usuario) {
+  if (!usuario.nombre || typeof usuario.nombre !== "string") return false;
+  if (typeof usuario.edad !== "number" || usuario.edad < 0) return false;
+  if (!usuario.pais || typeof usuario.pais !== "string") return false;
+
+  return true;
+}
+
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuario };
