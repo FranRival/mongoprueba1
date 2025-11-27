@@ -248,4 +248,25 @@ async function validarUsuariosEnBD(coleccion) {
 }
 
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD };
+async function insertarUsuariosValidados(coleccion, lista) {
+  const usuariosValidos = [];
+
+  for (const usuario of lista) {
+    if (validarUsuariosEnBD(usuario)) {
+      usuariosValidos.push(usuario);
+    } else {
+      console.log("❌ Usuario inválido, no se insertó:", usuario);
+    }
+  }
+
+  if (usuariosValidos.length > 0) {
+    const resultado = await coleccion.insertMany(usuariosValidos);
+    console.log(`✅ Usuarios insertados: ${resultado.insertedCount}`);
+  } else {
+    console.log("⚠️ No había usuarios válidos para insertar.");
+  }
+}
+
+
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD, insertarUsuariosValidados };

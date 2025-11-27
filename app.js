@@ -33,14 +33,14 @@ async function main() {
 
     //await crud.eliminarPorPais(usuarios,"Chechenia")
 
-    await crud.validarUsuariosEnBD(usuarios)
-    await crud.generacionUsuarios(usuarios)
+    //await crud.validarUsuariosEnBD(usuarios)
+    //await crud.generacionUsuarios(usuarios)
 
 
    
 
    //await crud.usuariosCorruptos(usuarios)
-   //await crud.usuariosCorruptosEliminarlos(usuarios)
+   await crud.usuariosCorruptosEliminarlos(usuarios)
    
     //await crud.generacionUsuarios(usuarios)
 
