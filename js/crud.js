@@ -268,5 +268,31 @@ async function insertarUsuariosValidados(coleccion, lista) {
 }
 
 
+function validarUsuarioProfesional(usuario) {
+  const errores = [];
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD, insertarUsuariosValidados };
+  if (!usuario.nombre)
+    errores.push("El nombre no existe");
+  else if (typeof usuario.nombre !== "string")
+    errores.push("El nombre debe ser string");
+
+  if (usuario.edad == null)
+    errores.push("La edad no existe");
+  else if (typeof usuario.edad !== "number")
+    errores.push("La edad debe ser number");
+  else if (usuario.edad < 0)
+    errores.push("La edad no puede ser negativa");
+
+  if (!usuario.pais)
+    errores.push("El país no existe");
+  else if (typeof usuario.pais !== "string")
+    errores.push("El país debe ser string");
+
+  return {
+    valido: errores.length === 0,
+    errores
+  };
+}
+
+
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD, insertarUsuariosValidados, validarUsuarioProfesional };
