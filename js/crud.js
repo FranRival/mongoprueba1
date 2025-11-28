@@ -290,7 +290,7 @@ function validarUsuarioProfesional(usuario) {
 
   return {
     valido: errores.length === 0,
-    errores
+    errores//otra prueba ipad
   };
 }
 
