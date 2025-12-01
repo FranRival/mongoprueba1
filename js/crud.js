@@ -269,6 +269,25 @@ async function insertarUsuariosValidados(coleccion, lista) {
 }
 
 
+async function generacionUsuariosSinEmpujarABD(usuarios) {
+  const usuariosCien = []
+  for (let index = 10; index < 130; index++) {
+    usuariosCien.push({
+      id: index,
+      nombre: "Usuario" + index,
+      edad: Math.floor(Math.random() * 50) + 18,
+      pais: "Minezota"
+    })
+  }
+  return usuariosCien
+}
+
+
+
+
+
+
+
 function validarUsuarioProfesional(usuario) {
   const errores = [];
 
@@ -300,4 +319,4 @@ function validarUsuarioProfesional(usuario) {
 
 
 
-module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD, insertarUsuariosValidados, validarUsuarioProfesional };
+module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD, insertarUsuariosValidados, validarUsuarioProfesional, generacionUsuariosSinEmpujarABD };

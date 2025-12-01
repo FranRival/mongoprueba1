@@ -40,7 +40,7 @@ async function main() {
    
 
    //await crud.usuariosCorruptos(usuarios)
-   await crud.usuariosCorruptosEliminarlos(usuarios)
+   //await crud.usuariosCorruptosEliminarlos(usuarios)
    
     //await crud.generacionUsuarios(usuarios)
 
@@ -48,6 +48,10 @@ async function main() {
     // await eliminarVariosPorNombre(usuarios,"Lorena")
      //await crud.eliminarEdadVacia(usuarios,null)
     // await crud.eliminarNombreObjeto(usuarios)
+
+
+    const lote = await crud.generacionUsuariosSinEmpujarABD()
+    const resultado = await crud.insertarUsuariosValidados(usuarios, lote)
 
 
      
