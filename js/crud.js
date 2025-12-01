@@ -252,7 +252,7 @@ async function insertarUsuariosValidados(coleccion, lista) {
   const usuariosValidos = [];
 
   for (const usuario of lista) {
-    if (validarUsuariosEnBD(usuario)) {
+    if (validarUsuarioAntesDeSubirABaseDatos(usuario)) {
       usuariosValidos.push(usuario);
     } else {
       console.log("❌ Usuario inválido, no se insertó:", usuario);
