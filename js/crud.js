@@ -256,9 +256,10 @@ async function insertarUsuariosValidados(coleccion, lista) {
       usuariosValidos.push(usuario);
     } else {
       console.log("❌ Usuario inválido, no se insertó:", usuario);
-    }
+    }//se validan los usuarios.
   }
 
+  //se inyectan los usuarios.
   if (usuariosValidos.length > 0) {
     const resultado = await coleccion.insertMany(usuariosValidos);
     console.log(`✅ Usuarios insertados: ${resultado.insertedCount}`);
@@ -293,6 +294,10 @@ function validarUsuarioProfesional(usuario) {
     errores//el return obtiene 2 resultados, el array + un true o false
   };
 }
+
+
+
+
 
 
 module.exports = { actualizarUsuario, eliminarUsuario, agregarUsuario, listarUsuarios, eliminarPorNombre, eliminarVariosPorNombre, eliminarPorPais, eliminarEdadVacia, generacionUsuarios, edadObjetoEliminar, eliminarNombreObjeto, usuariosCorruptos, usuariosCorruptosEliminarlos, validarUsuarioAntesDeSubirABaseDatos, validarUsuariosEnBD, insertarUsuariosValidados, validarUsuarioProfesional };
