@@ -1,27 +1,23 @@
 
-async function crearProducto(usuarios) {
-  const nuevosUsuarios = [{
-    nombre: "Ximena",
-    edad: 18,
-    pais: "DF",
-    ocupacion: "Cazafantasmas"
+async function crearProducto(producto) {
+  const nuevosProductos = [{
+    nombre: "Playera",
+    precio: 180,
+    categoria: "Ropa"
   }, {
-    nombre: "Eduardo",
-    edad: 87,
-    pais: "Colombia",
-    ocupacion: "Constructor"
+    nombre: "Pantalon",
+    precio: 800,
+    categoria: "Ropa"
   }, {
-    nombre: "Paco",
-    edad: 33,
-    pais: "Venezuela",
-    ocupacion: "sastre"
+    nombre: "Toalla",
+    precio: 300,
+    categoria: "Hogar"
   }, {
-    nombre: "Antonia",
-    edad: 21,
-    pais: "Espana",
-    ocupacion: "Camarera"
+    nombre: "Almohada",
+    precio: 500,
+    categoria: "Hogar"
   }]
 
-  const resultado = await usuarios.insertMany(nuevosUsuarios);
+  const resultado = await producto.insertMany(nuevosProductos);
   console.log("✅ Usuario creado con ID:", resultado.insertedId);
 }
