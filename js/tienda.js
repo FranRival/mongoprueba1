@@ -1,6 +1,6 @@
 // ==== IMPORTS ====
 const { MongoClient } = require("mongodb");
-const crud = require("./js/crud-tienda.js");
+const crud = require("./crud-tienda.js");
 const { crearProducto } = require("./crud-tienda.js");
 
 // ==== CONFIG ====
@@ -13,11 +13,11 @@ async function main() {
     console.log("✅ Conectado a MongoDB");
 
     const db = client.db("Tienda"); // cambia a tu base
-    const usuarios = db.collection("interiorTienda");
+    const interiorTienda = db.collection("interiorTienda");
 
     // ========== EJEMPLOS BÁSICOS ==========
 
-    await crud-Tienda.crearProducto(interirTienda)
+    await crearProducto(interiorTienda)
 
 
 

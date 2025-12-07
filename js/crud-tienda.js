@@ -1,5 +1,5 @@
 
-async function crearProducto(producto) {
+async function crearProducto(coleccion) {
   const nuevosProductos = [{
     nombre: "Playera",
     precio: 180,
@@ -18,8 +18,10 @@ async function crearProducto(producto) {
     categoria: "Hogar"
   }]
 
-  const resultado = await producto.insertMany(nuevosProductos);
-  console.log("✅ Usuario creado con ID:", resultado.insertedId);
+  const resultado = await coleccion.insertMany(nuevosProductos);
+  console.log("✅ Productos creados.");
+  console.log("Cantidad creada:", resultado.insertedCount);
+  
 }
 
 
