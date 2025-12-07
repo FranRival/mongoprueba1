@@ -34,4 +34,13 @@ async function crearCliente(coleccion) {
 }
 
 
-module.exports = {crearCliente}
+
+//1) Agregar Usuario
+async function agregarUsuario(usuarios, nombre, email, direccion, stock) {
+  const nuevosUsuarios = { nombre, edad, pais }
+  const resultado = await usuarios.insertOne(nuevosUsuarios);
+  console.log(`✅ Usuario agregado ${nombre}`);
+}
+
+
+module.exports = {crearCliente, agregarUsuario}

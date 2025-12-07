@@ -17,7 +17,10 @@ async function main() {
 
     // ========== EJEMPLOS BÁSICOS ==========
 
-    await crearCliente(datosDeClientes)
+    //await crearCliente(datosDeClientes)
+    await agregarUsuario(datosDeClientes, {nombre:"Lorena", email:"123@gmail.com",direccion:"DC gotica", stock:23})
+
+    //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
 
 
 
