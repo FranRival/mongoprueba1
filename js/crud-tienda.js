@@ -1,21 +1,30 @@
 
 async function crearProducto(coleccion) {
   const nuevosProductos = [{
-    nombre: "Playera",
+    nombre: "teclado",
     precio: 180,
-    categoria: "Ropa"
+    categoria: "gaming",
+    stock: 34
   }, {
-    nombre: "Pantalon",
+    nombre: "telefono",
     precio: 800,
-    categoria: "Ropa"
+    categoria: "gaming",
+    stock:5
   }, {
-    nombre: "Toalla",
+    nombre: "tablet",
     precio: 300,
-    categoria: "Hogar"
+    categoria: "gaming",
+    stock:6,
   }, {
-    nombre: "Almohada",
+    nombre: "computadora",
     precio: 500,
-    categoria: "Hogar"
+    categoria: "gaming",
+    stock:7,
+  },{
+    nombre:"Consola",
+    precio: 900,
+    categoria:"Gaming",
+    stock:23,
   }]
 
   const resultado = await coleccion.insertMany(nuevosProductos);
