@@ -21,3 +21,6 @@ async function crearProducto(producto) {
   const resultado = await producto.insertMany(nuevosProductos);
   console.log("✅ Usuario creado con ID:", resultado.insertedId);
 }
+
+
+module.exports = {crearProducto}
