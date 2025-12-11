@@ -36,11 +36,21 @@ async function crearCliente(coleccion) {
 
 
 //1) Agregar Usuario
-async function agregarUsuario(usuarios, nombre, email, direccion, stock) {
-  const nuevosUsuarios = { nombre, edad, pais }
+async function agregarUsuario(usuarios, nombre, edad, email, direccion) {
+  const nuevosUsuarios = { nombre, edad, email, direccion }
   const resultado = await usuarios.insertOne(nuevosUsuarios);
   console.log(`✅ Usuario agregado ${nombre}`);
 }
 
+//2) eliminar direccion email que contenga @
+async function usuariosCorruptosEliminarPorGmail(coleccion) {
+  const resultado = await coleccion.deleteMany({
+    email: { $regex: /@gmail\.com$/i }   // <-- elimina todos los que terminen en @gmail.com
+  });
 
-module.exports = {crearCliente, agregarUsuario}
+  console.log(`📌 Total de usuarios eliminados con @gmail.com: ${resultado.deletedCount}`);
+}
+
+
+
+module.exports = {crearCliente, agregarUsuario, usuariosCorruptosEliminarPorGmail}
