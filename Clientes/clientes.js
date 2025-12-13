@@ -20,12 +20,13 @@ async function main() {
     // ========== EJEMPLOS BÁSICOS ==========
 
     //await crearCliente(datosDeClientes)
-    //await crearCliente(datosDeClientes, {nombre:"Lorena", email:"123@gmail.com",direccion:"DC gotica"})
 
-   // await agregarUsuario(datosDeClientes, "Lorena", 22, "Halkovia")
+    await agregarUsuario(datosDeClientes, "ThaliaWho", 22, "Halkovia")
 
     //await crud.usuariosCorruptosEliminarPorGmail(datosDeClientes) //creo que esta linea causa el error en la terminal
 
+
+    //await crud.eliminarUsuariosDuplicados(datosDeClientes);
 
 
 
@@ -34,16 +35,6 @@ async function main() {
     //console.log(cursor);
     
 
-    await crud.agregarUsuario(datosDeClientes, {
-  nombre: "Lorena",
-  edad: 22,
-  email: "lorena@outlook.com",
-  direccion: "Halkovia"
-});
-
-const todos = await datosDeClientes.find().toArray();
-console.log("📦 DOCUMENTOS REALES EN ESTA COLECCIÓN:");
-console.log(todos);
 
 
     

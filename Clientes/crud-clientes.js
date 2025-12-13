@@ -54,4 +54,30 @@ async function usuariosCorruptosEliminarPorGmail(coleccion) {
 
 
 
-module.exports = {crearCliente, agregarUsuario, usuariosCorruptosEliminarPorGmail}
+async function eliminarUsuariosDuplicados(coleccion) {
+  // 1️⃣ Encontrar duplicados
+  const duplicados = await coleccion.aggregate([
+    {
+      $group: {
+        _id: "$email",              // agrupamos por email
+        ids: { $addToSet: "$_id" }, // guardamos todos los _id
+        count: { $sum: 1 }          // contamos cuántos hay
+      }
+    },
+    { $match: { count: { $gt: 1 } } } // solo los que tienen más de 1
+  ]).toArray();
+
+  // 2️⃣ Borrar todos menos el primero
+  let totalEliminados = 0;
+  for (const dup of duplicados) {
+    const [keep, ...remove] = dup.ids; // keep = primer id
+    const resultado = await coleccion.deleteMany({ _id: { $in: remove } });
+    totalEliminados += resultado.deletedCount;
+  }
+
+  console.log(`📌 Usuarios duplicados eliminados: ${totalEliminados}`);
+}
+
+
+
+module.exports = {crearCliente, agregarUsuario, usuariosCorruptosEliminarPorGmail, eliminarUsuariosDuplicados}
