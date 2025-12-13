@@ -1,27 +1,27 @@
 
 async function crearCliente(coleccion) {
   const nuevosClientes = [{
-    nombre: "teclado",
+    nombre: "Yoselin",
     email: "abc@gmail.com",
     direccion: "la Antartida",
     stock: 34
   }, {
-    nombre: "telefono",
+    nombre: "Clara",
     email: "def@gmail.com",
     direccion: "Fuerte Knox",
     stock:5
   }, {
-    nombre: "tablet",
+    nombre: "Nicole",
     email: "ghi@gmail.com",
     direccion: "La luna 503",
     stock:6,
   }, {
-    nombre: "computadora",
+    nombre: "Melisa",
     email: "jkl@gmail.com",
     direccion: "Springfield 123",
     stock:7,
   },{
-    nombre:"Consola",
+    nombre:"Ariadna",
     email: "mno@gmail.com",
     direccion:"Av. Siempre viva",
     stock:23,
@@ -40,6 +40,7 @@ async function agregarUsuario(usuarios, nombre, edad, email, direccion) {
   const nuevosUsuarios = { nombre, edad, email, direccion }
   const resultado = await usuarios.insertOne(nuevosUsuarios);
   console.log(`✅ Usuario agregado ${nombre}`);
+
 }
 
 //2) eliminar direccion email que contenga @

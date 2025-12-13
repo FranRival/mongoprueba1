@@ -1,7 +1,8 @@
 // ==== IMPORTS ====
 const { MongoClient } = require("mongodb");
 const crud = require("./crud-clientes.js");
-//const { crearCliente } = require("./crud-clientes.js");
+const { crearCliente } = require("./crud-clientes.js");
+const { agregarUsuario } = require("./crud-clientes.js")
 //const { usuariosCorruptosEliminarlos } = require("./crud-clientes.js");
 
 // ==== CONFIG ====
@@ -19,18 +20,31 @@ async function main() {
     // ========== EJEMPLOS BÁSICOS ==========
 
     //await crearCliente(datosDeClientes)
-    //await crearCliente(datosDeClientes, {nombre:"Lorena", email:"123@gmail.com",direccion:"DC gotica", stock:23})
+    //await crearCliente(datosDeClientes, {nombre:"Lorena", email:"123@gmail.com",direccion:"DC gotica"})
 
-    //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
+   // await agregarUsuario(datosDeClientes, "Lorena", 22, "Halkovia")
 
-    await crud.usuariosCorruptosEliminarPorGmail(datosDeClientes) //creo que esta linea causa el error en la terminal
-
-
+    //await crud.usuariosCorruptosEliminarPorGmail(datosDeClientes) //creo que esta linea causa el error en la terminal
 
 
-    const cursor = db.collection('DatosClientes').find({ email: 'def@gmail.com' });
-    console.log(cursor);
+
+
+
+    //const cursor = db.collection('DatosClientes').find({ email: 'def@gmail.com' });
+    //console.log(cursor);
     
+
+    await crud.agregarUsuario(datosDeClientes, {
+  nombre: "Lorena",
+  edad: 22,
+  email: "lorena@outlook.com",
+  direccion: "Halkovia"
+});
+
+const todos = await datosDeClientes.find().toArray();
+console.log("📦 DOCUMENTOS REALES EN ESTA COLECCIÓN:");
+console.log(todos);
+
 
     
   } catch (err) {
