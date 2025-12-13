@@ -23,7 +23,7 @@ async function main() {
 
     //await crud.agregarUsuario(usuarios, {nombre: "Lorena", edad: 22, pais: "Halkovia"})
 
-    await crud.usuariosCorruptosEliminarPorGmail(datosDeClientes)
+    await crud.usuariosCorruptosEliminarPorGmail(datosDeClientes) //creo que esta linea causa el error en la terminal
 
 
 
