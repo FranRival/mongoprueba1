@@ -14,30 +14,39 @@ async function main() {
     await client.connect();
     console.log("✅ Conectado a MongoDB");
 
-    const db = client.db("Clientes"); // cambia a tu base
-    const datosDeClientes = db.collection("DatosClientes");
+
+    const db = client.db("prototypo11nov25"); // tu base de datos
+
 
     // ========== EJEMPLOS BÁSICOS ==========
 
-    //await crearCliente(datosDeClientes)
-
-    await agregarUsuario(datosDeClientes, "ThaliaWho", 22, "Halkovia")
-
-    //await crud.usuariosCorruptosEliminarPorGmail(datosDeClientes) //creo que esta linea causa el error en la terminal
 
 
-    //await crud.eliminarUsuariosDuplicados(datosDeClientes);
+    const productos = db.collection("productos");
+    const clientes = db.collection("clientes");
+    const ordenes = db.collection("ordenes");
 
 
+    const resProductos = await productos.insertMany([
+      { nombre: "Laptop", precio: 20000, categoria: "Electrónica", stock: 12 },
+      { nombre: "Playera roja", precio: 180, categoria: "Ropa", stock: 50 },
+      { nombre: "Pantalón mezclilla", precio: 850, categoria: "Ropa", stock: 30 },
+      { nombre: "Silla gamer", precio: 4500, categoria: "Muebles", stock: 8 },
+      { nombre: "Mouse inalámbrico", precio: 350, categoria: "Electrónica", stock: 40 }
+    ])
+
+    console.log(`✅ Se insertaron ${resProductos.insertedCount} productos`);
 
 
-    //const cursor = db.collection('DatosClientes').find({ email: 'def@gmail.com' });
-    //console.log(cursor);
-    
+    const resClientes = await clientes.insertMany([
+      { nombre: "Ana López", email: "ana@example.com", direccion: "CDMX", edad: 29 },
+      { nombre: "Carlos Pérez", email: "carlos@example.com", direccion: "Guadalajara", edad: 34 },
+      { nombre: "María Torres", email: "maria@example.com", direccion: "Monterrey", edad: 41 }
+    ])
+
+    console.log(`✅ Se insertaron ${resClientes.insertedCount} clientes`);
 
 
-
-    
   } catch (err) {
     console.log("❌ Error:", err);
   } finally {
